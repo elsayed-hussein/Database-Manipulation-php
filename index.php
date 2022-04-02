@@ -34,7 +34,14 @@
   $result = mysqli_query($conn, $query);
 
   if (empty($result)) {
-    $query = "CREATE TABLE `product` ( `ID` INT NOT NULL AUTO_INCREMENT , `Prod_name` VARCHAR NOT NULL DEFAULT 'Product' , `price` FLOAT NOT NULL DEFAULT '0' , `Prod_description` TEXT NOT NULL DEFAULT 'no description', `quantity` INT NOT NULL DEFAULT '0' , `created_at` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
+    $query = "CREATE TABLE `product` ( 
+      `ID` INT NOT NULL AUTO_INCREMENT ,
+      `Prod_name` VARCHAR(250) NOT NULL,
+      `price` double  NOT NULL,
+      `Prod_description` TEXT NOT NULL,
+      `quantity` INT(10) NOT NULL , 
+      `created_at` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+      PRIMARY KEY (`ID`)) ;";
     $result = mysqli_query($conn, $query);
   };
   echo "Connected successfully";
@@ -45,7 +52,7 @@
 
 </html>
 
-<!-- [ ] Create a table of products. -->
+<!-- [x] Create a table of products. -->
 <!-- [ ] insert 20 rows with the Id of that product, the name and the price of it into the table using a form that takes the needed data and submits it into that table. -->
 <!-- [ ] Connect to database using object oriented notation. -->
 <!-- [ ] Display only the first 10 products on another display page. -->
