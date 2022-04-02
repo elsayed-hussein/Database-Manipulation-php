@@ -9,6 +9,7 @@
   $servername = "127.0.0.1";
   $username = "test";
   $password = "passowrd";
+  $db_name = 'product_db';
 
   // Create connection
   $conn = new mysqli($servername, $username, $password);
@@ -19,32 +20,24 @@
     exit();
   }
   // CREATE DATABASE IF NOT EXISTS 
-  if (!$conn->select_db("db")) {
-    echo "Couldn't select database: " . $conn->error;
-    if (!$conn->query("CREATE DATABASE IF NOT EXISTS db")) {
+  if (!$conn->select_db($db_name)) {
+    // echo "Couldn't select database: " . $conn->error;
+    if (!$conn->query("CREATE DATABASE IF NOT EXISTS {$db_name}")) {
       echo "Couldn't create database: " . $conn->error;
     }
-    $conn->select_db('db');
+    $conn->select_db($db_name);
   }
-  echo "Connected successfully";
 
 
   // CREATE TABLE IF NOT EXISTS 
-  $query = "SELECT ID FROM 'product';";
+  $query = "SELECT ID FROM 'product'";
   $result = mysqli_query($conn, $query);
 
   if (empty($result)) {
-    $query = "CREATE TABLE 'product' (
-                            ID int(11) AUTO_INCREMENT,
-                            name varchar(255) NOT NULL,
-                            price FLOAT(15) NOT NULL,
-                            description TEXT(250) NULL,
-                            quantity int(11)  NULL,
-                            created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            PRIMARY KEY  (ID)
-                            );";
+    $query = "CREATE TABLE `product` ( `ID` INT NOT NULL AUTO_INCREMENT , `Prod_name` VARCHAR NOT NULL DEFAULT 'Product' , `price` FLOAT NOT NULL DEFAULT '0' , `Prod_description` TEXT NOT NULL DEFAULT 'no description', `quantity` INT NOT NULL DEFAULT '0' , `created_at` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
     $result = mysqli_query($conn, $query);
   };
+  echo "Connected successfully";
 
   $conn->close();
   ?>
