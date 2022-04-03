@@ -49,27 +49,27 @@ if ($conn->connect_error) {
                 <ul>
                     <li>
                         <b> ID :</b>
-                        <?php echo $row['id']; ?>
+                        <?php echo htmlspecialchars($row['id']); ?>
                     </li>
                     <li>
                         <b> Product Name :</b>
-                        <?php echo $row['Prod_name']; ?>
+                        <?php echo htmlspecialchars($row['Prod_name']); ?>
                     </li>
                     <li>
                         <b> Price :</b>
-                        <?php echo $row['price']; ?>
+                        <?php echo htmlspecialchars($row['price']); ?>
                     </li>
                     <li>
                         <b> Description :</b>
-                        <?php echo $row['Prod_description']; ?>
+                        <?php echo htmlspecialchars($row['Prod_description']); ?>
                     </li>
                     <li>
                         <b> Quantity :</b>
-                        <?php echo $row['quantity']; ?>
+                        <?php echo htmlspecialchars($row['quantity']); ?>
                     </li>
                     <li>
                         <b> Created At :</b>
-                        <?php echo $row['created_at']; ?>
+                        <?php echo htmlspecialchars($row['created_at']); ?>
                     </li>
                 </ul>
                 <hr>
@@ -90,27 +90,27 @@ if ($conn->connect_error) {
                 <ul>
                     <li>
                         <b> ID :</b>
-                        <?php echo $row['id']; ?>
+                        <?php echo htmlspecialchars($row['id']); ?>
                     </li>
                     <li>
                         <b> Product Name :</b>
-                        <?php echo $row['Prod_name']; ?>
+                        <?php echo htmlspecialchars($row['Prod_name']); ?>
                     </li>
                     <li>
                         <b> Price :</b>
-                        <?php echo $row['price']; ?>
+                        <?php echo htmlspecialchars($row['price']); ?>
                     </li>
                     <li>
                         <b> Description :</b>
-                        <?php echo $row['Prod_description']; ?>
+                        <?php echo htmlspecialchars($row['Prod_description']); ?>
                     </li>
                     <li>
                         <b> Quantity :</b>
-                        <?php echo $row['quantity']; ?>
+                        <?php echo htmlspecialchars($row['quantity']); ?>
                     </li>
                     <li>
                         <b> Created At :</b>
-                        <?php echo $row['created_at']; ?>
+                        <?php echo htmlspecialchars($row['created_at']); ?>
                     </li>
                 </ul>
                 <hr>

@@ -107,27 +107,27 @@ if (isset($_POST['submit'])) {
       <ul>
         <li>
           <b> ID :</b>
-          <?php echo $row['id']; ?>
+          <?php echo htmlspecialchars($row['id']); ?>
         </li>
         <li>
           <b> Product Name :</b>
-          <?php echo $row['Prod_name']; ?>
+          <?php echo htmlspecialchars($row['Prod_name']); ?>
         </li>
         <li>
           <b> Price :</b>
-          <?php echo $row['price']; ?>
+          <?php echo htmlspecialchars($row['price']); ?>
         </li>
         <li>
           <b> Description :</b>
-          <?php echo $row['Prod_description']; ?>
+          <?php echo htmlspecialchars($row['Prod_description']); ?>
         </li>
         <li>
           <b> Quantity :</b>
-          <?php echo $row['quantity']; ?>
+          <?php echo htmlspecialchars($row['quantity']); ?>
         </li>
         <li>
           <b> Created At :</b>
-          <?php echo $row['created_at']; ?>
+          <?php echo htmlspecialchars($row['created_at']); ?>
         </li>
       </ul>
     <?php endwhile ?>
@@ -149,4 +149,4 @@ if (isset($_POST['submit'])) {
 <!-- [x] Display the last record inserted to the table on the display page. -->
 <!-- [x] Display only the first 10 products on another display page. -->
 <!-- [x] Search about a specific product and display it on the display page, for example:return all products that have a price more than 5$ using the suitable query statement. -->
-<!-- [ ] Use sanitization and escaping functions to secure your program. -->
+<!-- [x] Use sanitization and escaping functions to secure your program. -->
