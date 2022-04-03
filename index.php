@@ -12,21 +12,30 @@ if ($conn->connect_error) {
   die("Connection failed: {$conn->connect_error}");
   exit();
 }
-// CREATE DATABASE IF NOT EXISTS 
-if (!$conn->select_db($db_name)) {
-  // echo "Couldn't select database: " . $conn->error;
-  if (!$conn->query("CREATE DATABASE IF NOT EXISTS {$db_name}")) {
-    echo "Couldn't create database: " . $conn->error;
-  }
+// // CREATE DATABASE IF NOT EXISTS 
+// if (!$conn->select_db($db_name)) {
+//   // echo "Couldn't select database: " . $conn->error;
+//   if (!$conn->query("CREATE DATABASE IF NOT EXISTS {$db_name}")) {
+//     echo "Couldn't create database: " . $conn->error;
+//   }
+//   $conn->select_db($db_name);
+// }
+
+// Create database if not  exists
+$sql = "CREATE DATABASE IF NOT EXISTS {$db_name}";
+if ($conn->query($sql) === TRUE) {
   $conn->select_db($db_name);
+} else {
+  echo "Error creating database: " . $conn->error;
 }
 
 // CREATE TABLE IF NOT EXISTS 
-$query = "SELECT ID FROM 'product'";
+// $query = "SELECT ID FROM 'product'";
+$query = "SHOW TABLES LIKE 'product'";
 $result = mysqli_query($conn, $query);
 
 if (empty($result)) {
-  $query = "CREATE TABLE `product` ( 
+  $query = "CREATE TABLE  `product` ( 
       `ID` INT NOT NULL AUTO_INCREMENT ,
       `Prod_name` VARCHAR(250) NOT NULL,
       `price` double  NOT NULL,
@@ -36,8 +45,6 @@ if (empty($result)) {
       PRIMARY KEY (`ID`)) ;";
   $result = mysqli_query($conn, $query);
 };
-echo "Connected successfully <br/>";
-
 
 // Add data to db
 if (isset($_POST['submit'])) {
@@ -125,16 +132,21 @@ if (isset($_POST['submit'])) {
       </ul>
     <?php endwhile ?>
 
-
+    <a href="./display.php">
+      <b>
+        Show All Product
+      </b>
+    </a>
   </fieldset>
 </body>
 
 </html>
 
+
 <!-- [x] Connect to database using object oriented notation. -->
 <!-- [x] Create a table of products. -->
-<!-- [ ] insert 20 rows with the Id of that product, the name and the price of it into the table using a form that takes the needed data and submits it into that table. -->
+<!-- [x] insert 20 rows with the Id of that product, the name and the price of it into the table using a form that takes the needed data and submits it into that table. -->
 <!-- [x] Display the last record inserted to the table on the display page. -->
-<!-- [ ] Display only the first 10 products on another display page. -->
-<!-- [ ] Search about a specific product and display it on the display page, for example:return all products that have a price more than 5$ using the suitable query statement. -->
+<!-- [x] Display only the first 10 products on another display page. -->
+<!-- [x] Search about a specific product and display it on the display page, for example:return all products that have a price more than 5$ using the suitable query statement. -->
 <!-- [ ] Use sanitization and escaping functions to secure your program. -->
