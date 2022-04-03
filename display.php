@@ -41,12 +41,11 @@ if ($conn->connect_error) {
                 </h3>
             </legend>
             <?php
-            $product_name = $_POST['prod_name'];
+            $product_name =  $conn->real_escape_string($_POST['prod_name']);
             $sql = "SELECT id,Prod_name,price,Prod_description,quantity,created_at FROM product Where Prod_name Like '%$product_name%'";
             $result = mysqli_query($conn, $sql); ?>
             <?php
             while ($row = mysqli_fetch_assoc($result)) : ?>
-
                 <ul>
                     <li>
                         <b> ID :</b>

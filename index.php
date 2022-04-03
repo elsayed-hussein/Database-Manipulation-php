@@ -48,10 +48,10 @@ if (empty($result)) {
 
 // Add data to db
 if (isset($_POST['submit'])) {
-  $Prod_name = $_POST['prod_name'];
-  $price = $_POST['price'];
-  $Prod_description = $_POST['Prod_description'];
-  $quantity = $_POST['quantity'];
+  $Prod_name = $conn->real_escape_string($_POST['prod_name']);
+  $price = $conn->real_escape_string($_POST['price']);
+  $Prod_description = $conn->real_escape_string($_POST['Prod_description']);
+  $quantity = $conn->real_escape_string($_POST['quantity']);
   $sql = "INSERT INTO product (Prod_name,price,Prod_description,quantity)
      VALUES ('$Prod_name','$price','$Prod_description','$quantity')";
   if (mysqli_query($conn, $sql)) {
